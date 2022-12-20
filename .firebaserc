@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "mystuff-c0313"
+  },
+  "targets": {
+    "mystuff-c0313": {
+      "hosting": {
+        "myStuff": [
+          "mystuff-c0313"
+        ]
+      }
+    }
+  }
+}
