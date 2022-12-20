@@ -18,7 +18,7 @@
       "port": 8080
     },
     "hosting": {
-      "port": 4200
+      "port": 5002
     },
     "ui": {
       "enabled": true
@@ -45,5 +45,9 @@
         "npm --prefix \"$RESOURCE_DIR\" run build"
       ]
     }
-  ]
+  ],
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
 }

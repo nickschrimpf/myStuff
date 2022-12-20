@@ -12,6 +12,7 @@ export class StuffService {
   stuff$;
   stuffCollection;
   constructor(private fireStore:Firestore) {
+    console.log(this.fireStore)
     this.stuffCollection = collection(this.fireStore,'stuff');
     this.stuff$ = collectionData(this.stuffCollection,{idField:'id'});
   };
