@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, NgForm, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Stuff } from '../stuff.model';
 import { StuffService } from '../stuff.service';
 
@@ -12,7 +12,11 @@ import { StuffService } from '../stuff.service';
 
 export class AddEditStuffComponent implements OnInit {
   today = new Date()
-  constructor(private fb:FormBuilder,private stuffServ:StuffService, private router:Router) { }
+  constructor(
+    private fb:FormBuilder,
+    private stuffServ:StuffService,
+    private router:Router,
+    private route:ActivatedRoute) { }
 
   stuffForm = this.fb.group({
     name:['',Validators.required],
@@ -20,6 +24,11 @@ export class AddEditStuffComponent implements OnInit {
   })
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params:Params) => {
+        console.log(params)
+      }
+    )
   }
 
   onSubmit(){

@@ -14,7 +14,11 @@ export class StuffItemComponent implements OnInit {
   constructor(private readonly stuffServ:StuffService) { }
 
   ngOnInit(): void {
-    console.log(this.stuffItem)
+
+  }
+
+  onDelete(id:string){
+    this.stuffServ.onDeleteStuff(id);
   }
 
 }

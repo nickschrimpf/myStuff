@@ -4,7 +4,7 @@ export class Stuff{
     public name: string,
     public quantity: number,
     public dateEntered:Date,
-    public id?:string,
+    public id:string,
     ){
 
   }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore } from '@angular/fire/firestore';
+import { deleteDoc, doc, Firestore } from '@angular/fire/firestore';
 import { collectionData, collection } from '@angular/fire/firestore';
 import { addDoc } from '@firebase/firestore';
 import { BehaviorSubject, map, Observable } from 'rxjs';
@@ -15,15 +15,15 @@ export class StuffService {
     this.stuffCollection = collection(this.fireStore,'stuff');
     this.stuff$ = collectionData(this.stuffCollection,{idField:'id'});
   };
-
   onGetStuff(){
-    return this.stuff$
+    return this.stuff$;
   };
-
   onAddNewStuff(stuff:any){
-    return addDoc(this.stuffCollection,stuff)
-    // stuff = new Stuff(stuff.name,stuff.quantity,stuff.dateEntered);
-    // this.stuff.push(stuff)
-    // console.log(this.fireStore)
-  }
+    return addDoc(this.stuffCollection,stuff);
+  };
+  onDeleteStuff(id:string){
+    // console.log(id)
+    const stuffDocReference = doc(this.fireStore,`stuff/${id}`);
+    return deleteDoc(stuffDocReference);
+  };
 }
