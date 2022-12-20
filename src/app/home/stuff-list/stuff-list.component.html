@@ -1,4 +1,4 @@
-<div *ngFor="let stuff of stuffList">
+<div *ngFor="let stuff of stuffList | async">
   <app-stuff-item [stuffItem]="stuff"></app-stuff-item>
 </div>
 
