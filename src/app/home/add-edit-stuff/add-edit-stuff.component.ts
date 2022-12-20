@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, NgForm, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Stuff } from '../stuff.model';
+import { StuffService } from '../stuff.service';
 
 @Component({
   selector: 'app-add-edit-stuff',
@@ -8,18 +11,22 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 
 export class AddEditStuffComponent implements OnInit {
+  today = new Date()
+  constructor(private fb:FormBuilder,private stuffServ:StuffService, private router:Router) { }
 
-  constructor(private fb:FormBuilder) { }
-
-stuffForm = this.fb.group({
-  stuffName:['',Validators.required],
-  stuffQuantity:[null,Validators.required]
-})
+  stuffForm = this.fb.group({
+    name:['',Validators.required],
+    quantity:['',Validators.required]
+  })
 
   ngOnInit(): void {
   }
-  onSubmit(){
-    console.log(this.stuffForm)
-  }
 
+  onSubmit(){
+    const name = this.stuffForm.value.name;
+    const quantity = this.stuffForm.value.quantity;
+    this.stuffServ.onAddNewStuff({name:name,quantity:quantity,dateEntered:this.today});
+    this.stuffForm.reset()
+    this.router.navigate(['home'])
+  }
 }

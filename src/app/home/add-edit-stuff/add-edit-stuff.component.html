@@ -1,16 +1,26 @@
-<form [formGroup]="stuffForm" (ngSubmit)="onSubmit()">
-  <input
-    name="name"
-    type="text"
-    formControlName="stuffName"
-    autocomplete="on"
-  >
-  <br>
-  <input
-      type="number"
-      name="quantity"
-      max = "100"
-      min = "1"
-      formControlName="stuffQuantity"
-    >
-</form>
+<div class="stuff-form">
+
+    <form [formGroup]="stuffForm" (ngSubmit)="onSubmit()">
+      <div class="stuff-input">
+        <label for="name">Stuff Name: </label>
+        <input
+          name="name"
+          placeholder="enter stuff's name here"
+          type="text"
+          formControlName="name"
+          autocomplete="on"
+        >
+      </div>
+      <div class="stuff-input">
+        <label for="quantity">How much stuff?</label>
+        <input
+          type="number"
+          name="quantity"
+          placeholder="1"
+          max = "100"
+          min = "1"
+          formControlName="quantity">
+      </div>
+      <button [disabled]="!stuffForm.valid">add Stuff</button>
+  </form>
+</div>

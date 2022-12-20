@@ -1,5 +1,11 @@
 export class Stuff{
-  'name':string;
-  'quantity':number;
-  'dateEntered':any;
+
+  constructor(
+    public name: string,
+    public quantity: number,
+    public dateEntered:Date,
+    public id?:string,
+    ){
+
+  }
 }
