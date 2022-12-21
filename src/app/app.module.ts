@@ -31,23 +31,10 @@ import { connectFirestoreEmulator } from '@firebase/firestore';
     BrowserModule,
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => {
-      let firestore:Firestore;
-        if(environment.useEmulators){
-          firestore = initializeFirestore(getApp(),{})
-          connectFirestoreEmulator(firestore,'localhost', 8080);
-        }else{
-          firestore = getFirestore()
-        }
-      return firestore
-    })
+    provideFirestore(() => getFirestore())
   ],
 
-  providers:[
-    // { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ?  ['localhost', 8080] :undefined},
-    // { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined },
-    // { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined },
-  ],
+  providers:[],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
