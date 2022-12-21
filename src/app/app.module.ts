@@ -8,11 +8,11 @@ import { StuffItemComponent } from './home/stuff-item/stuff-item.component';
 import { AddEditStuffComponent } from './home/add-edit-stuff/add-edit-stuff.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { getApp, initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore,Firestore, initializeFirestore } from '@angular/fire/firestore';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
-import { connectFirestoreEmulator } from '@firebase/firestore';
+
 import { StuffDatePipe } from './shared/stuff-date.pipe';
 
 @NgModule({
