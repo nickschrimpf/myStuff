@@ -21,6 +21,7 @@
           min = "1"
           formControlName="quantity">
       </div>
-      <button [disabled]="!stuffForm.valid">add Stuff</button>
+      <button type="submit" [disabled]="!stuffForm.valid">Save</button>
+      <button type="button" (click)="onCancel()">cancel</button>
   </form>
 </div>

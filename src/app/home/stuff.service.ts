@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { deleteDoc, doc, docData, Firestore } from '@angular/fire/firestore';
+import { deleteDoc, doc, docData, Firestore, updateDoc } from '@angular/fire/firestore';
 import { collectionData, collection } from '@angular/fire/firestore';
 import { addDoc } from '@firebase/firestore';
-import { BehaviorSubject, map, Observable } from 'rxjs';
-import { Stuff } from './stuff.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,15 +18,18 @@ export class StuffService {
     return this.stuff$;
   };
   onGetStuffById(id:any){
-    console.log(id)
-    const stuffDocReference = doc(this.fireStore,`stuff/${id}`)
-    return docData(stuffDocReference,{idField:'id'})
+    const stuffDocReference = doc(this.fireStore,`stuff/${id}`);
+    return docData(stuffDocReference,{idField:'id'});
   };
-  onAddNewStuff(stuff:any){
-    return addDoc(this.stuffCollection,stuff);
+  onAddNewStuff(stuffItem:any){
+    return addDoc(this.stuffCollection,stuffItem);
   };
   onDeleteStuff(id:string){
     const stuffDocReference = doc(this.fireStore,`stuff/${id}`);
     return deleteDoc(stuffDocReference);
   };
-}
+  onUpdateStuff(stuffItem:any){
+    const stuffDocReference = doc(this.fireStore,`stuff/${stuffItem.id}`);
+    return updateDoc(stuffDocReference,stuffItem);
+  };
+};
