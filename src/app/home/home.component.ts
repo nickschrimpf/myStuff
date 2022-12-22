@@ -10,7 +10,6 @@ import { StuffService } from './stuff.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  today = new Date()
   constructor(
     public dialog:MatDialog,
     private readonly stuffServ:StuffService
@@ -23,7 +22,7 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(AddEditStuffComponent,{})
     dialogRef.afterClosed().subscribe(newStuff => {
       if(newStuff){
-        this.stuffServ.onAddNewStuff({dateEntered:this.today,...newStuff});
+        this.stuffServ.onAddNewStuff({dateEntered:new Date(),...newStuff});
       };
     });
   };
