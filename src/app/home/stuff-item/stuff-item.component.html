@@ -1,8 +1,12 @@
-<p>
-  Name: {{stuffItem.name}}<br>
-  Quantity: {{stuffItem.quantity}}<br>
-  Date entered: {{stuffItem.dateEntered | stuffDate}}
-  <button mat-raised-button color="primary" routerLink="editstuff/{{stuffItem.id}}">edit</button>
-  <button mat-stroked-button color="accent" (click)="onDelete(stuffItem.id)">delete</button>
-</p>
+<mat-card>
+ <mat-card-title>{{stuffItem.name}}</mat-card-title>
+ <mat-card-subtitle>Quantity: {{stuffItem.quantity}}</mat-card-subtitle>
+  <mat-card-content>Entered: {{stuffItem.dateEntered | stuffDate}}</mat-card-content>
+  <mat-card-actions align="end">
+      <button mat-raised-button color="primary"(click)="onOpenDialog()">edit</button>
+      <button mat-stroked-button color="accent" (click)="onDelete(stuffItem.id)">delete</button>
+    </mat-card-actions>
+</mat-card>
+
+
 

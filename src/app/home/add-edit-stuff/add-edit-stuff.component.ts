@@ -1,7 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Stuff } from '../stuff.model';
 import { StuffService } from '../stuff.service';
 
 @Component({
@@ -20,58 +22,36 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private stuffServ:StuffService,
-    private router:Router,
-    private route:ActivatedRoute)
+    public dialogRef:MatDialogRef<AddEditStuffComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:Stuff,
+    private readonly stuffServ:StuffService,
+
+  )
   {};
 
   ngOnInit(): void {
-    this.routeSub = this.route.params.subscribe(
-      (params:Params) => {
-        this.id = params['id'];
-        this.editMode = params['id'] != null;
-        this.initForm();
-      });
-
+    if(this.data){
+      this.editMode = true;
+      this.id = this.data.id
+    };
+    this.initForm();
   };
 
   private initForm(){
     let name = '';
     let quantity = 1;
     if(this.editMode){
-      this.stuffSub = this.stuffServ.onGetStuffById(this.id)
-       .subscribe(stuff => {
-        name = stuff['name'];
-        quantity = stuff['quantity'];
-        this.stuffForm.patchValue({name,quantity});
-      });
+      name = this.data.name;
+      quantity = this.data.quantity;
     };
     this.stuffForm = new FormGroup({
       name:new FormControl(name,Validators.required),
       quantity:new FormControl(quantity,Validators.required)
     });
   };
-  onSubmit(){
-    if(this.editMode){
-      this.stuffServ.onUpdateStuff(
-        {id:this.id,...this.stuffForm.value,dateEntered:this.today}
-      );
-    }else{
-      const name = this.stuffForm.value.name;
-      const quantity = this.stuffForm.value.quantity;
-      this.stuffServ.onAddNewStuff(
-        {name:name,quantity:quantity,dateEntered:this.today}
-      );
-    };
-    this.stuffForm.reset();
-    this.router.navigate(['home']);
-  };
   onCancel(){
-    this.stuffForm.reset();
-    this.router.navigate(['home'])
+    this.dialogRef.close();
   };
   ngOnDestroy(): void {
-    this.stuffSub?.unsubscribe();
-    this.routeSub?.unsubscribe();
   };
 };
