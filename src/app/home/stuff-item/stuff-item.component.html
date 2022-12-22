@@ -2,7 +2,7 @@
   Name: {{stuffItem.name}}<br>
   Quantity: {{stuffItem.quantity}}<br>
   Date entered: {{stuffItem.dateEntered | stuffDate}}
-  <a routerLink="editstuff/{{stuffItem.id}}">edit</a>
-  <button (click)="onDelete(stuffItem.id)">delete</button>
+  <button mat-raised-button color="primary" routerLink="editstuff/{{stuffItem.id}}">edit</button>
+  <button mat-stroked-button color="accent" (click)="onDelete(stuffItem.id)">delete</button>
 </p>
 
