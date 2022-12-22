@@ -14,6 +14,8 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 
 
 import { StuffDatePipe } from './shared/stuff-date.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialsModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +31,10 @@ import { StuffDatePipe } from './shared/stuff-date.pipe';
     ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
+    MaterialsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],
-
   providers:[],
   bootstrap: [AppComponent]
 })
