@@ -32,6 +32,7 @@ import { MaterialsModule } from './material.module';
     BrowserModule,
     AppRoutingModule,
     MaterialsModule,
+    BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore())
   ],
