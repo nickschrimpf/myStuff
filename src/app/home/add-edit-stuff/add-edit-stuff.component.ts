@@ -29,7 +29,6 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
     };
     this.initForm();
     this.minDate = new Date();
-    console.log(this.stuffForm)
   };
 
   private initForm(){
