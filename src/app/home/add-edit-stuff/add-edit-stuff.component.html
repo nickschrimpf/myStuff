@@ -1,6 +1,6 @@
 <div class="stuff-form">
 
-    <form [formGroup]="stuffForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="stuffForm" >
       <div class="stuff-input">
         <label for="name">Stuff Name: </label>
         <input
@@ -21,7 +21,7 @@
           min = "1"
           formControlName="quantity">
       </div>
-      <button type="submit" [disabled]="!stuffForm.valid">Save</button>
+      <button type="submit" [disabled]="!stuffForm.valid"[mat-dialog-close]="stuffForm.value">Save</button>
       <button type="button" (click)="onCancel()">cancel</button>
   </form>
 </div>
