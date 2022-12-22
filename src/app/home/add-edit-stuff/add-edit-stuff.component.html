@@ -1,27 +1,36 @@
-<div class="stuff-form">
-
-    <form [formGroup]="stuffForm" >
-      <div class="stuff-input">
-        <label for="name">Stuff Name: </label>
-        <input
-          name="name"
-          placeholder="enter stuff's name here"
-          type="text"
-          formControlName="name"
-          autocomplete="on"
-        >
+<button mat-icon-button color="accent" type="button"(click)="onCancel()"><mat-icon>close</mat-icon></button>
+    <form *ngIf="stuffForm" [formGroup]="stuffForm" >
+      <div>
+        <mat-form-field>
+          <mat-label for="name">Stuff Name: </mat-label>
+          <input
+            matInput
+            name="name"
+            placeholder="enter stuff's name here"
+            type="text"
+            formControlName="name"
+            autocomplete="on"
+          >
+        </mat-form-field>
       </div>
-      <div class="stuff-input">
-        <label for="quantity">How much stuff?</label>
-        <input
-          type="number"
-          name="quantity"
-          placeholder="1"
-          max = "100"
-          min = "1"
-          formControlName="quantity">
+      <div>
+        <mat-form-field>
+          <mat-label for="quantity">How much stuff?</mat-label>
+          <input
+            matInput
+            type="number"
+            name="quantity"
+            placeholder="1"
+            max = "100"
+            min = "1"
+            formControlName="quantity">
+        </mat-form-field>
       </div>
-      <button type="submit" [disabled]="!stuffForm.valid"[mat-dialog-close]="stuffForm.value">Save</button>
-      <button type="button" (click)="onCancel()">cancel</button>
+      <button
+        mat-raised-button
+        align="end"
+        type="submit"
+        color="primary"
+        [disabled]="!stuffForm.valid"[mat-dialog-close]="stuffForm.value">Save</button>
   </form>
-</div>
+
