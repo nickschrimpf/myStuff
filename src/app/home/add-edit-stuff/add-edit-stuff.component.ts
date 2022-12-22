@@ -16,8 +16,6 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
   today = new Date();
   id:string|null = null;
   editMode: boolean = false;
-  stuffSub:Subscription|undefined;
-  routeSub:Subscription|undefined;
   stuffForm:FormGroup;
 
 
@@ -25,7 +23,6 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
     public dialogRef:MatDialogRef<AddEditStuffComponent>,
     @Inject(MAT_DIALOG_DATA) public data:Stuff,
     private readonly stuffServ:StuffService,
-
   )
   {};
 
