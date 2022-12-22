@@ -1,10 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { ActivatedRoute, Router, Params } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { Stuff } from '../stuff.model';
-import { StuffService } from '../stuff.service';
 
 @Component({
   selector: 'app-add-edit-stuff',
@@ -13,7 +10,6 @@ import { StuffService } from '../stuff.service';
 })
 
 export class AddEditStuffComponent implements OnInit, OnDestroy {
-  today = new Date();
   id:string|null = null;
   editMode: boolean = false;
   stuffForm:FormGroup;
@@ -22,7 +18,6 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
   constructor(
     public dialogRef:MatDialogRef<AddEditStuffComponent>,
     @Inject(MAT_DIALOG_DATA) public data:Stuff,
-    private readonly stuffServ:StuffService,
   )
   {};
 
