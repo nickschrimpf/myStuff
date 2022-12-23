@@ -44,7 +44,10 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
       quantity = this.data.quantity;
       description = this.data.description;
       parishable = this.data.parishable;
-      expirationDate = new Date(this.data.expirationDate.seconds * 1000)
+      if(parishable){
+        expirationDate = new Date(this.data.expirationDate.seconds * 1000)
+      }
+
     };
     this.stuffForm = new FormGroup({
       name:new FormControl(name,Validators.required),
