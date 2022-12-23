@@ -1,3 +1,18 @@
 mat-card{
-  margin:5px 2.5px 5px 2.5px;
+  margin:5px 5px 5px 5px;
+}
+mat-card-title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title-name{
+  display: flex;
+  align-items: center;
+}
+mat-card-footer{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 16px;
 }
