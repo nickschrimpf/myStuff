@@ -1,5 +1,5 @@
 <button mat-icon-button color="accent" type="button"(click)="onCancel()"><mat-icon>close</mat-icon></button>
-    <form *ngIf="stuffForm" [formGroup]="stuffForm" >
+    <form *ngIf="stuffForm" [formGroup]="stuffForm">
       <div>
         <mat-form-field>
           <mat-label for="name">Stuff Name: </mat-label>
@@ -26,11 +26,54 @@
             formControlName="quantity">
         </mat-form-field>
       </div>
-      <button
-        mat-raised-button
-        align="end"
-        type="submit"
-        color="primary"
-        [disabled]="!stuffForm.valid"[mat-dialog-close]="stuffForm.value">Save</button>
+      <div>
+        <mat-form-field>
+          <mat-label for="description">Stuff description</mat-label>
+          <textarea
+            matInput
+            name="description"
+            formControlName="description"
+            placeholder="discribe your stuff"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>parishable</mat-label>
+          <mat-select
+            matInput
+            name="parishable"
+            formControlName="parishable"
+            #parishableInput
+            >
+            <mat-option [value]="true">true</mat-option>
+            <mat-option [value]="false">false</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div *ngIf="this.stuffForm.value.parishable">
+        <mat-form-field>
+          <mat-label>Expiration date</mat-label>
+          <input
+          matInput
+          [min]="minDate"
+          [matDatepicker]="picker"
+          formControlName="expirationDate"
+          >
+          <mat-datepicker-toggle matSuffix [for]="picker">
+          </mat-datepicker-toggle>
+          <mat-datepicker  #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <button
+          mat-raised-button
+          type="submit"
+          color="primary"
+          [disabled]="!stuffForm.valid"
+          [mat-dialog-close]="stuffForm.value"
+          >Save
+        </button>
+      </div>
   </form>
 
