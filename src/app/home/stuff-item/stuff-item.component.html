@@ -1,11 +1,15 @@
 <mat-card>
- <mat-card-title>{{stuffItem.name}}</mat-card-title>
- <mat-card-subtitle>Quantity: {{stuffItem.quantity}}</mat-card-subtitle>
-  <mat-card-content>Entered: {{stuffItem.dateEntered | stuffDate}}</mat-card-content>
+  <mat-card-subtitle align="end">Qty: {{stuffItem.quantity}} </mat-card-subtitle>
+    <mat-card-title>{{stuffItem.name}}</mat-card-title>
+    <mat-card-subtitle>added {{stuffItem.dateEntered | stuffDate}} ago </mat-card-subtitle>
+  <mat-card-content>{{stuffItem.description}}</mat-card-content>
   <mat-card-actions align="end">
-      <button mat-raised-button color="primary"(click)="onOpenDialog()">edit</button>
-      <button mat-stroked-button color="accent" (click)="onDelete(stuffItem.id)">delete</button>
-    </mat-card-actions>
+    <button mat-raised-button color="primary"(click)="onOpenDialog()">edit</button>
+    <button mat-stroked-button color="accent" (click)="onDelete(stuffItem.id)">delete</button>
+  </mat-card-actions>
+  <mat-card-footer *ngIf="stuffItem.parishable">
+    <mat-icon>kitchen</mat-icon><span> expires in {{stuffItem.expirationDate|stuffDate:'expiration'}}</span>
+  </mat-card-footer>
 </mat-card>
 
 

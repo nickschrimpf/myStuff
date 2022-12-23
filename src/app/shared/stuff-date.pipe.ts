@@ -5,44 +5,49 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class StuffDatePipe implements PipeTransform {
 
-  transform(value): string {
+  transform(value,timeFrame = 'timeSinceItemEntry'): string {
+    if(!value.seconds){
+      return `something went wrong with value.name's expiration date`;
+    }
+    let stuffTimeInSecs;
     const today = Date.now()/1000;
     const entryDate = value.seconds;
     const entryDateString = new Date(value.seconds * 1000).toDateString();
-    const timeSinceEntryInSec = today - entryDate;
+    if(timeFrame != 'timeSinceItemEntry'){
+      stuffTimeInSecs = entryDate - today;
+    }else{
+      stuffTimeInSecs = today - entryDate;
+    }
     const hourInSec = 3600;
     const dayInSec  = 86400;
     const weekInSec = 604800;
     const monthInSec = 2419200;
-    if(timeSinceEntryInSec < 60 ){
-      return `${(timeSinceEntryInSec).toFixed(0)} seconds ago`;
-    }else if(
-      timeSinceEntryInSec > 60 &&
-      timeSinceEntryInSec < hourInSec
+    if(
+      stuffTimeInSecs < hourInSec
     ){
-      return `${(timeSinceEntryInSec/60).toFixed(0)} mins ago`;
+      return `less then an hour`;
     }else if(
-      timeSinceEntryInSec > hourInSec &&
-      timeSinceEntryInSec < dayInSec
+      stuffTimeInSecs > hourInSec &&
+      stuffTimeInSecs < dayInSec
     ){
-      return `${(timeSinceEntryInSec/hourInSec).toFixed(0)} hrs ago`;
+      return `${(stuffTimeInSecs/hourInSec).toFixed(0)} hrs`;
     }else if(
-      timeSinceEntryInSec > dayInSec &&
-      timeSinceEntryInSec < weekInSec
+      stuffTimeInSecs > dayInSec &&
+      stuffTimeInSecs < weekInSec
     ){
-      return `${(timeSinceEntryInSec/dayInSec).toFixed(0)} days ago, ${entryDateString}`;
+      return `${(stuffTimeInSecs/dayInSec).toFixed(0)} days, ${entryDateString}`;
     }else if(
-      timeSinceEntryInSec > weekInSec &&
-      timeSinceEntryInSec < monthInSec
+      stuffTimeInSecs > weekInSec &&
+      stuffTimeInSecs < monthInSec
     ){
-      return `${(timeSinceEntryInSec/weekInSec).toFixed(0)} weeks ago, ${entryDateString}`;
+      return `${(stuffTimeInSecs/weekInSec).toFixed(0)} weeks, ${entryDateString}`;
     }else if(
-      timeSinceEntryInSec > monthInSec &&
-      timeSinceEntryInSec < (monthInSec * 12)
+      stuffTimeInSecs > monthInSec &&
+      stuffTimeInSecs < (monthInSec * 12)
     ){
-      return `${(timeSinceEntryInSec/monthInSec).toFixed(0)} months ago, ${entryDateString}`;
+      return `${(stuffTimeInSecs/monthInSec).toFixed(0)} months, ${entryDateString}`;
     }else{
-      return `${(timeSinceEntryInSec/(monthInSec * 12)).toFixed(0)} years ago, ${entryDateString}`;
+      return `${(stuffTimeInSecs/(monthInSec * 12)).toFixed(0)} years, ${entryDateString}`;
     };
   };
 };

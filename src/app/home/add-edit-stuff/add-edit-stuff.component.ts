@@ -25,6 +25,7 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     if(this.data){
       this.editMode = true;
+
       this.id = this.data.id
     };
     this.initForm();
