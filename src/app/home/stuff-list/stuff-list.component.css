@@ -1,8 +1,6 @@
 .stuff-card-list{
-  border: 4px solid #651fff;
-  border-radius:15px;
-  margin: 15px 15px;
-  height: 75vh;
+  border-radius:15px 15px 0px 0px;
+  height: 80vh;
   overflow-y: auto;
   background-color: teal;
 }

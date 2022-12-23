@@ -1,19 +1,24 @@
 <mat-card>
-  <mat-card-title>{{stuffItem.name}} {{stuffItem.quantity}}</mat-card-title>
+  <mat-card-title>
+    <div class="title-name">
+      <mat-icon>{{stuffItem.parishable ? 'kitchen' : 'no_meals'}}</mat-icon>
+      {{stuffItem.name}}
+    </div>
+    <div class="title-quantity">
+     Qty: {{stuffItem.quantity}}
+    </div>
+  </mat-card-title>
   <mat-card-subtitle>
-    <div>
-      added {{stuffItem.dateEntered | stuffDate}} ago
-    </div>
-
-    <div *ngIf="stuffItem.parishable">
-      <span>expires in {{stuffItem.expirationDate | stuffDate:'expiration'}}</span>
-    </div>
+      {{stuffItem.parishable ? 'expries in '+(stuffItem.expirationDate | stuffDate:'expiration') : 'added '+(stuffItem.dateEntered | stuffDate)}}
   </mat-card-subtitle>
   <mat-card-content>{{stuffItem.description}}</mat-card-content>
-  <mat-card-actions align="end">
-    <button mat-raised-button color="primary"(click)="onOpenDialog()">edit</button>
-    <button mat-stroked-button color="accent" (click)="onDelete(stuffItem.id)">delete</button>
-  </mat-card-actions>
+  <mat-card-footer>
+    <mat-card-subtitle>{{stuffItem.parishable ?  'added '+(stuffItem.dateEntered | stuffDate) +' ago' : null }} </mat-card-subtitle>
+    <div>
+      <button mat-icon-button color="primary"(click)="onOpenDialog()"><mat-icon>edit</mat-icon></button>
+      <button mat-icon-button color="warn" (click)="onDelete(stuffItem.id)"><mat-icon>delete</mat-icon></button>
+    </div>
+  </mat-card-footer>
 </mat-card>
 
 
