@@ -1,3 +1,5 @@
+import { Timestamp } from "@angular/fire/firestore";
+
 export class Stuff{
   constructor(
     public name:string,
@@ -5,7 +7,7 @@ export class Stuff{
     public dateEntered:Date,
     public parishable:boolean,
     public description:string,
-    public expirationDate?:Date,
+    public expirationDate?:any,
     public id?:string,
     ){
   };
