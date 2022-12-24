@@ -1,5 +1,7 @@
 mat-card{
-  margin:5px 5px 5px 5px;
+  margin:5px 10px 5px 10px;
+  max-width: 339px;
+  border-radius: 15px;
 }
 mat-card-title{
   display: flex;

@@ -1,6 +1,24 @@
+.list-backdrop{
+  margin-top:-5vh;
+  height: 10vh;
+  width: 100vw;
+  backdrop-filter: blur;
+  background-color:#7794ae;
+  clip-path: polygon(3% 100%,0% 100%,100% 100%,100% 10%);
+}
 .stuff-card-list{
-  border-radius:15px 15px 0px 0px;
-  height: 80vh;
+  width: 100vw;
+  height: 85vh;
+  padding-top: 10px;
   overflow-y: auto;
-  background-color: teal;
+  background-color: #7794ae;
+  border-top-left-radius: 15px;
+}
+.stuff-list-footer{
+  height: 55px;
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  background-color:rgba(218, 229,225, .6);
+  backdrop-filter: blur(10px);
 }
