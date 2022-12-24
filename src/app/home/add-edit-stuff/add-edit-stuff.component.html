@@ -1,30 +1,33 @@
 <button mat-icon-button color="accent" type="button"(click)="onCancel()"><mat-icon>close</mat-icon></button>
     <form *ngIf="stuffForm" [formGroup]="stuffForm">
-      <div>
-        <mat-form-field>
-          <mat-label for="name">Stuff Name: </mat-label>
-          <input
-            matInput
-            name="name"
-            placeholder="enter stuff's name here"
-            type="text"
-            formControlName="name"
-            autocomplete="on"
-          >
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <mat-label for="quantity">How much stuff?</mat-label>
-          <input
-            matInput
-            type="number"
-            name="quantity"
-            placeholder="1"
-            max = "100"
-            min = "1"
-            formControlName="quantity">
-        </mat-form-field>
+      <div class="name-quantity-inputs">
+        <div class="name_input">
+          <mat-form-field>
+            <mat-label for="name">Stuff Name: </mat-label>
+            <input
+              matInput
+              name="name"
+              placeholder="enter stuff's name here"
+              type="text"
+              maxlength="15"
+              formControlName="name"
+              autocomplete="on"
+            >
+          </mat-form-field>
+        </div>
+        <div class="quantity_input">
+          <mat-form-field>
+            <mat-label for="quantity">How much stuff?</mat-label>
+            <input
+              matInput
+              type="number"
+              name="quantity"
+              placeholder="1"
+              max = "100"
+              min = "1"
+              formControlName="quantity">
+          </mat-form-field>
+        </div>
       </div>
       <div>
         <mat-form-field>
@@ -34,6 +37,7 @@
             name="description"
             formControlName="description"
             placeholder="discribe your stuff"
+            maxlength="180"
           ></textarea>
         </mat-form-field>
       </div>

@@ -1,1 +1,8 @@
-
+form{
+  max-width: 300px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.quantity_inputs mat-form-field{
+  width: 25px;
+}
