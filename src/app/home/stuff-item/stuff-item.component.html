@@ -9,7 +9,7 @@
     </div>
   </mat-card-title>
   <mat-card-subtitle>
-      {{stuffItem.parishable ? 'expries in '+(stuffItem.expirationDate | stuffDate:'expiration') : 'added '+(stuffItem.dateEntered | stuffDate)}}
+      {{stuffItem.parishable ? 'expires in '+(stuffItem.expirationDate | stuffDate:'expiration') : 'added '+(stuffItem.dateEntered | stuffDate)}}
   </mat-card-subtitle>
   <mat-card-content>{{stuffItem.description}}</mat-card-content>
   <mat-card-footer>
