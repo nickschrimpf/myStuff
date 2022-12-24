@@ -1,0 +1,37 @@
+.page-container{
+  position: absolute;
+  top: 0;
+  bottom:0;
+  left: 0;
+  right:0;
+  overflow: auto;
+  background-color: #456179;
+  color:white;
+}
+.action-panel{
+  width: 100%;
+  margin-left: 25px;
+  margin-right: 25px;
+  display: flex;
+  align-items: center;
+}
+mat-form-field{
+  background-color:rgba(218, 229,225);
+  margin-left: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 250px;
+  height: 58px;
+  border: none;
+}
+.stuff-list-footer{
+  width: 100vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right:0;
+  top:90%;
+  background-color:rgba(218, 229,225, .6);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
