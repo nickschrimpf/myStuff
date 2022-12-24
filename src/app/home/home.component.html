@@ -1,4 +1,28 @@
-<h1>My Stuff</h1>
-<button mat-icon-button (click)="onOpenDialog()" color="accent"><mat-icon>add_circle</mat-icon></button>
-<router-outlet></router-outlet>
-<app-stuff-list></app-stuff-list>
+<div class="page-container">
+  <h1>My Stuff</h1>
+    <div class="action-panel">
+      <div class="action-panel__addbtn">
+        <button mat-mini-fab (click)="onOpenDialog()" color="primary">
+          <mat-icon>add_circle</mat-icon>
+        </button>
+      </div>
+      <div class="action-panel__search">
+        <mat-form-field color="accent" appearance="outline">
+          <mat-label>search your stuff</mat-label>
+        <input
+          placeholder="search"
+          matInput
+          type="search"
+          ngModel
+        >
+        <mat-icon matPrefix color="accent">search</mat-icon>
+      </mat-form-field>
+      </div>
+    </div>
+  <router-outlet></router-outlet>
+  <app-stuff-list></app-stuff-list>
+  <div class="stuff-list-footer">
+
+  </div>
+
+</div>
