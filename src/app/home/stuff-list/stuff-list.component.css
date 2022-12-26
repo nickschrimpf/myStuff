@@ -2,7 +2,7 @@
   width: 100vw;
   position:fixed;
   bottom:0;
-  height: 80%;
+  height: 70%;
   padding-top: 10px;
   background-color:#00897B;
   border-top-left-radius: 15px;
@@ -12,4 +12,8 @@
   flex-direction: column;
   align-items: center;
 }
-
+@media screen and (min-width: 775px) {
+  .stuff-card-list{
+    flex-wrap: wrap;
+  }
+}
