@@ -15,18 +15,17 @@
 }
 .action-panel{
   width: 100vw;
-  margin-left: 25px;
-  margin-right: 25px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 mat-form-field{
   background-color:rgba(218, 229,225);
-  margin-left: 20px;
+  margin-left: 10px;
   padding: 5px;
   border-radius: 5px;
-  width:60vw;
-  max-width: 150vw;
+  width:100%;
+  max-width: 350px;
   align-content: center;
   height: 58px;
   border: none;
