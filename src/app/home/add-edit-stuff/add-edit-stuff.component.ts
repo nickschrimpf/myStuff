@@ -35,7 +35,7 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
   private initForm(){
     let name = '';
     let quantity = 1;
-    let parishable = false;
+    let perishable = false;
     let description = '';
     let expirationDate = undefined;
 
@@ -43,8 +43,8 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
       name = this.data.name;
       quantity = this.data.quantity;
       description = this.data.description;
-      parishable = this.data.parishable;
-      if(parishable){
+      perishable = this.data.perishable;
+      if(perishable){
         expirationDate = new Date(this.data.expirationDate.seconds * 1000)
       }
 
@@ -53,7 +53,7 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
       name:new FormControl(name,Validators.required),
       quantity:new FormControl(quantity,Validators.required),
       description:new FormControl(description),
-      parishable:new FormControl(parishable),
+      perishable:new FormControl(perishable),
       expirationDate:new FormControl(expirationDate)
     });
   };

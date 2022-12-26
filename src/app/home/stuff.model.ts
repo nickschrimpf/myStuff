@@ -5,7 +5,7 @@ export class Stuff{
     public name:string,
     public quantity:number,
     public dateEntered:Date,
-    public parishable:boolean,
+    public perishable:boolean,
     public description:string,
     public expirationDate?:any,
     public id?:string,
