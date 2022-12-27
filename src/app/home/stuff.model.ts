@@ -6,6 +6,7 @@ export class Stuff{
     public category:string,
     public categoryIcon:string,
     public description:string,
+    public searchTerms:any,
     public expirationDate?:any,
     public id?:string,
     ){

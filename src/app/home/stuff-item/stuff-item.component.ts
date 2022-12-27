@@ -9,6 +9,7 @@ import { AddEditStuffComponent } from '../add-edit-stuff/add-edit-stuff.componen
   templateUrl: './stuff-item.component.html',
   styleUrls: ['./stuff-item.component.css']
 })
+
 export class StuffItemComponent implements OnInit {
   @Input()
   stuffItem!: Stuff;
@@ -24,8 +25,6 @@ export class StuffItemComponent implements OnInit {
   onOpenDialog():void{
     const dialogRef = this.dialog.open(AddEditStuffComponent,{data:this.stuffItem});
     dialogRef.afterClosed().subscribe(editedStuff => {
-
-        // this.stuffServ.onUpdateStuff({id:this.stuffItem.id,...result})
         if(editedStuff){
           const stuffName = editedStuff.name.split(' ');
           let newName = '';
@@ -52,8 +51,7 @@ export class StuffItemComponent implements OnInit {
           }else if(editedStuff.category === 'Perishable Stuff'){
             stuffCategoryIconName = 'kitchen';
           };
-          console.log(this.stuffItem)
-          console.log(editedStuff)
+
           this.stuffServ.onUpdateStuff({
             id:this.stuffItem.id,
             dateEntered:this.stuffItem.dateEntered,
