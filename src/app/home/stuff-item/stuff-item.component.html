@@ -1,18 +1,18 @@
 <mat-card>
   <mat-card-title>
     <div class="title-name">
-      <mat-icon>{{stuffItem.perishable ? 'kitchen' : 'no_meals'}}</mat-icon> {{stuffItem.name}}
+      <mat-icon>{{stuffItem.category === 'perishable' ? 'kitchen' : 'no_meals'}}</mat-icon> {{stuffItem.name}}
     </div>
     <div class="title-quantity">
      Qty: {{stuffItem.quantity}}
     </div>
   </mat-card-title>
   <mat-card-subtitle>
-      {{stuffItem.perishable ? 'expires in '+(stuffItem.expirationDate | stuffDate:'expiration') : 'added '+(stuffItem.dateEntered | stuffDate)}}
+      <!-- {{stuffItem.perishable ? 'expires in '+(stuffItem.expirationDate | stuffDate:'expiration') : 'added '+(stuffItem.dateEntered | stuffDate)}} -->
   </mat-card-subtitle>
   <mat-card-content>{{stuffItem.description}}</mat-card-content>
   <mat-card-footer>
-    <mat-card-subtitle>{{stuffItem.perishable ?  'added '+(stuffItem.dateEntered | stuffDate) +' ago' : null }} </mat-card-subtitle>
+    <!-- <mat-card-subtitle>{{stuffItem.perishable ?  'added '+(stuffItem.dateEntered | stuffDate) +' ago' : null }} </mat-card-subtitle> -->
     <div>
       <button mat-icon-button color="primary"(click)="onOpenDialog()"><mat-icon>edit</mat-icon></button>
       <button mat-icon-button color="warn" (click)="onDelete(stuffItem.id)"><mat-icon>delete</mat-icon></button>
