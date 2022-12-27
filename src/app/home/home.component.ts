@@ -25,21 +25,47 @@ export class HomeComponent implements OnInit {
     const otherIcon = 'no_food';
     const perishableIcon = 'kitchen';
     const bathroomIcon = 'bathroom';
+    let stuffCategoryIconName = ''
     const dialogRef = this.dialog.open(AddEditStuffComponent,{})
     dialogRef.afterClosed().subscribe(newStuff => {
+
       console.log(newStuff)
       if(newStuff){
         const stuffName = newStuff.name.split(' ');
         let newName = '';
-
         for(let word of stuffName){
           if(word !== ''){
             newName += word.charAt(0).toUpperCase() + word.slice(1) + ' '
           }
         }
-        const searchAbleTerms  = newStuff.description.split(' ') + stuffName
-        console.log(searchAbleTerms)
-        // this.stuffServ.onAddNewStuff({dateEntered:new Date(),...newStuff});
+
+        const searchTerms  = newStuff.description.split(' ').concat(stuffName);
+
+        if(newStuff.category === 'House Hold Stuff'){
+          stuffCategoryIconName = 'house';
+        }else if(newStuff.category === 'Pet Stuff'){
+          stuffCategoryIconName = 'pets';
+        }else if(newStuff.category === 'Other Stuff'){
+          stuffCategoryIconName = 'no_food';
+        }else if(newStuff.category === 'Bathroom Stuff'){
+          stuffCategoryIconName = 'bathroom'
+        }else if(newStuff.category === 'Perishable Stuff'){
+          stuffCategoryIconName = 'kitchen';
+        }
+
+
+        console.log(newStuff.expirationDate)
+
+        this.stuffServ.onAddNewStuff({
+          dateEntered:new Date(),
+          name:newName,
+          quantity:newStuff.quantity,
+          description:newStuff.description,
+          category:newStuff.category,
+          categoryIcon:stuffCategoryIconName,
+          expirationDate:newStuff.expirationDate,
+          searchTerms:searchTerms
+        });
       };
     });
   };

@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import { Stuff } from '../stuff.model';
 import { nameValidator } from './name-validator';
+import { categoryValidator } from './category-validator';
 
 @Component({
   selector: 'app-add-edit-stuff',
@@ -45,7 +46,7 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
       quantity = this.data.quantity;
       description = this.data.description;
       category = this.data.category;
-      if(category === 'perishable'){
+      if(category === 'Perishable Stuff'){
         expirationDate = new Date(this.data.expirationDate.seconds * 1000)
       }
 
@@ -56,7 +57,7 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
       description:new FormControl(description),
       category:new FormControl(category,Validators.required),
       expirationDate:new FormControl(expirationDate)
-    });
+    },{validators:categoryValidator()});
   };
   onCancel(){
     this.dialogRef.close();
@@ -64,3 +65,4 @@ export class AddEditStuffComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
   };
 };
+

@@ -7,15 +7,15 @@
             <input
               matInput
               name="name"
-              placeholder="enter stuff's name here"
               type="text"
               maxlength="15"
               minlength="3"
               formControlName="name"
               autocomplete="on"
-              spellcheck="on"
+              spellcheck="true"
             >
-            <mat-error *ngIf="stuffForm.get('name').touched && stuffForm.get('name').invalid"> min 3 characters and a max of 15</mat-error>
+            <mat-hint>min 3 characters and a max of 15</mat-hint>
+            <mat-error *ngIf="stuffForm.get('name').touched && stuffForm.get('name').invalid"> Please name your stuff!</mat-error>
           </mat-form-field>
 
 
@@ -40,26 +40,13 @@
             matInput
             name="description"
             formControlName="description"
-            placeholder="discribe your stuff"
             maxlength="180"
+            spellcheck="true"
           ></textarea>
         </mat-form-field>
 
-
-        <!-- <mat-form-field>
-          <mat-label>Perishable</mat-label>
-          <mat-select
-            matInput
-            name="perishable"
-            formControlName="perishable"
-            >
-            <mat-option [value]="true">true</mat-option>
-            <mat-option [value]="false">false</mat-option>
-          </mat-select>
-        </mat-form-field> -->
-
         <mat-form-field>
-          <mat-label>category</mat-label>
+          <mat-label for="category">Category</mat-label>
           <mat-select
             matInput
             multiple="false"
@@ -67,16 +54,16 @@
             formControlName="category"
             >
           <mat-select-trigger>{{stuffForm.value.category}}</mat-select-trigger>
-            <mat-option value="house"><mat-icon>house</mat-icon>house hold stuff</mat-option>
-            <mat-option value="pets"><mat-icon>pets</mat-icon>pets</mat-option>
-            <mat-option value="other"><mat-icon>no_food</mat-icon>other</mat-option>
-            <mat-option value="bathroom"><mat-icon>bathroom</mat-icon>bathroom</mat-option>
-            <mat-option value="perishable"><mat-icon>kitchen</mat-icon>perishable</mat-option>
+            <mat-option value="House Hold Stuff"><mat-icon>house</mat-icon>House Hold stuff</mat-option>
+            <mat-option value="Pet Stuff"><mat-icon>pets</mat-icon>Pets Stuff</mat-option>
+            <mat-option value="Other Stuff"><mat-icon>no_food</mat-icon>Other Stuff</mat-option>
+            <mat-option value="Bathroom Stuff"><mat-icon>bathroom</mat-icon>Bathroom Stuff</mat-option>
+            <mat-option value="Perishable Stuff"><mat-icon>kitchen</mat-icon>Perishable Stuff</mat-option>
           </mat-select>
         </mat-form-field>
 
 
-        <mat-form-field *ngIf="stuffForm.value.category === 'perishable'">
+        <mat-form-field *ngIf="stuffForm.value.category === 'Perishable Stuff'">
           <mat-label>Expiration Date</mat-label>
           <input
           matInput
@@ -87,7 +74,8 @@
           <mat-datepicker-toggle matSuffix [for]="picker">
           </mat-datepicker-toggle>
           <mat-datepicker  #picker></mat-datepicker>
-          <mat-error >you obviously can't set something to expire in the past</mat-error>
+          <mat-hint>Enter The Best By Or Expiration Date</mat-hint>
+          <mat-error >Please Enter A Valid Expiration Date</mat-error>
         </mat-form-field>
 
 
