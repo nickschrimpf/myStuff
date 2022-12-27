@@ -23,10 +23,44 @@ export class StuffItemComponent implements OnInit {
 
   onOpenDialog():void{
     const dialogRef = this.dialog.open(AddEditStuffComponent,{data:this.stuffItem});
-    dialogRef.afterClosed().subscribe(result => {
-      if(result){
-        this.stuffServ.onUpdateStuff({id:this.stuffItem.id,...result})
-      };
+    dialogRef.afterClosed().subscribe(editedStuff => {
+
+        // this.stuffServ.onUpdateStuff({id:this.stuffItem.id,...result})
+        if(editedStuff){
+          const stuffName = editedStuff.name.split(' ');
+          let newName = '';
+          for(let word of stuffName){
+            if(word !== ''){
+              newName += word.charAt(0).toUpperCase() + word.slice(1) + ' ';
+            };
+          };
+          const searchTerms  = editedStuff.description.split(' ').concat(stuffName);
+          let stuffCategoryIconName = '';
+          if(editedStuff.category === 'House Hold Stuff'){
+            stuffCategoryIconName = 'house';
+          }else if(editedStuff.category === 'Pet Stuff'){
+            stuffCategoryIconName = 'pets';
+          }else if(editedStuff.category === 'Other Stuff'){
+            stuffCategoryIconName = 'no_food';
+          }else if(editedStuff.category === 'Bathroom Stuff'){
+            stuffCategoryIconName = 'bathroom'
+          }else if(editedStuff.category === 'Perishable Stuff'){
+            stuffCategoryIconName = 'kitchen';
+          };
+          console.log(this.stuffItem)
+          console.log(editedStuff)
+          this.stuffServ.onUpdateStuff({
+            id:this.stuffItem.id,
+            dateEntered:this.stuffItem.dateEntered,
+            name:newName,
+            quantity:editedStuff.quantity,
+            description:editedStuff.description,
+            category:editedStuff.category,
+            categoryIcon:stuffCategoryIconName,
+            expirationDate:editedStuff.expirationDate,
+            searchTerms:searchTerms
+          });
+        };
     });
   };
 
