@@ -1,7 +1,7 @@
 <button mat-icon-button color="accent" type="button"(click)="onCancel()"><mat-icon>close</mat-icon></button>
     <form *ngIf="stuffForm" [formGroup]="stuffForm">
-      <div class="name-quantity-inputs">
-        <div class="name_input">
+
+
           <mat-form-field>
             <mat-label for="name">Stuff Name: </mat-label>
             <input
@@ -10,12 +10,16 @@
               placeholder="enter stuff's name here"
               type="text"
               maxlength="15"
+              minlength="3"
               formControlName="name"
               autocomplete="on"
+              spellcheck="on"
             >
+            <mat-error *ngIf="stuffForm.get('name').touched && stuffForm.get('name').invalid"> min 3 characters and a max of 15</mat-error>
           </mat-form-field>
-        </div>
-        <div class="quantity_input">
+
+
+
           <mat-form-field>
             <mat-label for="quantity">How Much Stuff?</mat-label>
             <input
@@ -27,9 +31,9 @@
               min = "1"
               formControlName="quantity">
           </mat-form-field>
-        </div>
-      </div>
-      <div>
+
+
+
         <mat-form-field>
           <mat-label for="description">Stuff Description</mat-label>
           <textarea
@@ -40,23 +44,39 @@
             maxlength="180"
           ></textarea>
         </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
+
+
+        <!-- <mat-form-field>
           <mat-label>Perishable</mat-label>
           <mat-select
             matInput
             name="perishable"
             formControlName="perishable"
-            #parishableInput
             >
             <mat-option [value]="true">true</mat-option>
             <mat-option [value]="false">false</mat-option>
           </mat-select>
-        </mat-form-field>
-      </div>
-      <div>
+        </mat-form-field> -->
+
         <mat-form-field>
+          <mat-label>category</mat-label>
+          <mat-select
+            matInput
+            multiple="false"
+            name="category"
+            formControlName="category"
+            >
+          <mat-select-trigger>{{stuffForm.value.category}}</mat-select-trigger>
+            <mat-option value="house"><mat-icon>house</mat-icon>house hold stuff</mat-option>
+            <mat-option value="pets"><mat-icon>pets</mat-icon>pets</mat-option>
+            <mat-option value="other"><mat-icon>no_food</mat-icon>other</mat-option>
+            <mat-option value="bathroom"><mat-icon>bathroom</mat-icon>bathroom</mat-option>
+            <mat-option value="perishable"><mat-icon>kitchen</mat-icon>perishable</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field *ngIf="stuffForm.value.category === 'perishable'">
           <mat-label>Expiration Date</mat-label>
           <input
           matInput
@@ -67,8 +87,11 @@
           <mat-datepicker-toggle matSuffix [for]="picker">
           </mat-datepicker-toggle>
           <mat-datepicker  #picker></mat-datepicker>
+          <mat-error >you obviously can't set something to expire in the past</mat-error>
         </mat-form-field>
-      </div>
+
+
+
       <div>
         <button
           mat-raised-button

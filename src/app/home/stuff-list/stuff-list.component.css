@@ -1,13 +1,15 @@
 .stuff-card-list{
+  box-shadow: 0px 1px 5px black inset;
   width: 100vw;
   position:fixed;
   bottom:0;
-  height: 70%;
+  height: 65%;
   padding-top: 10px;
   background-color:#00897B;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
