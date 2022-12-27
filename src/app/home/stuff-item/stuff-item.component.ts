@@ -25,7 +25,6 @@ export class StuffItemComponent implements OnInit {
     const dialogRef = this.dialog.open(AddEditStuffComponent,{data:this.stuffItem});
     dialogRef.afterClosed().subscribe(editedStuff => {
 
-        // this.stuffServ.onUpdateStuff({id:this.stuffItem.id,...result})
         if(editedStuff){
           const stuffName = editedStuff.name.split(' ');
           let newName = '';
@@ -34,7 +33,12 @@ export class StuffItemComponent implements OnInit {
               newName += word.charAt(0).toUpperCase() + word.slice(1) + ' ';
             };
           };
-          const searchTerms  = editedStuff.description.split(' ').concat(stuffName);
+          let searchTerms = []
+          if(editedStuff.description){
+            searchTerms  = editedStuff.description.split(' ').concat(stuffName);
+          }else{
+            searchTerms = stuffName;
+          };
           let stuffCategoryIconName = '';
           if(editedStuff.category === 'House Hold Stuff'){
             stuffCategoryIconName = 'house';
@@ -47,8 +51,6 @@ export class StuffItemComponent implements OnInit {
           }else if(editedStuff.category === 'Perishable Stuff'){
             stuffCategoryIconName = 'kitchen';
           };
-          console.log(this.stuffItem)
-          console.log(editedStuff)
           this.stuffServ.onUpdateStuff({
             id:this.stuffItem.id,
             dateEntered:this.stuffItem.dateEntered,
@@ -58,7 +60,7 @@ export class StuffItemComponent implements OnInit {
             category:editedStuff.category,
             categoryIcon:stuffCategoryIconName,
             expirationDate:editedStuff.expirationDate,
-            searchTerms:searchTerms
+            searchTerms:searchTerms,
           });
         };
     });
