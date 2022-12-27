@@ -3,7 +3,6 @@ export function nameValidator():ValidatorFn {
   return(control:AbstractControl):ValidationErrors | null => {
     const value = control.value
     const trimmed  = value.trim();
-    console.log(trimmed.length)
     if(trimmed === ''){
       return {error:{value:'you will have to name your stuff something'}}
     }else if(trimmed.length < 3){
