@@ -34,7 +34,12 @@ export class StuffItemComponent implements OnInit {
               newName += word.charAt(0).toUpperCase() + word.slice(1) + ' ';
             };
           };
-          const searchTerms  = editedStuff.description.split(' ').concat(stuffName);
+          let searchTerms = [];
+          if(editedStuff.description){
+            searchTerms  = editedStuff.description.split(' ').concat(stuffName);
+          }else{
+            searchTerms = stuffName
+          }
           let stuffCategoryIconName = '';
           if(editedStuff.category === 'House Hold Stuff'){
             stuffCategoryIconName = 'house';
