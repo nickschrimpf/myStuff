@@ -9,9 +9,13 @@ form{
   flex-direction: column;
 }
 mat-form-field{
-margin-top: 15px;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
-
 mat-hint{
   color:#651fff;
+}
+textarea{
+  text-decoration: none;
+  resize: none;
 }
