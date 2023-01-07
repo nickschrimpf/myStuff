@@ -1,24 +1,32 @@
-<mat-card>
-  <mat-card-title>
-    <div class="title-name">
-      <mat-icon>{{stuffItem.categoryIcon}}</mat-icon> {{stuffItem.name}}
-    </div>
-    <div class="title-quantity">
-     Qty: {{stuffItem.quantity}}
-    </div>
-  </mat-card-title>
-  <mat-card-subtitle>
-      {{stuffItem.expirationDate ? 'expires in '+(stuffItem.expirationDate | stuffDate:'expiration') : 'added '+(stuffItem.dateEntered | stuffDate)}}
-  </mat-card-subtitle>
-  <mat-card-content>{{stuffItem.description}}</mat-card-content>
-  <mat-card-footer>
-    <mat-card-subtitle>{{stuffItem.category === 'Perishable Stuff' ?  'added '+(stuffItem.dateEntered | stuffDate) +' ago' : null }} </mat-card-subtitle>
+<mat-expansion-panel>
+
+  <mat-expansion-panel-header >
+    <mat-panel-title>
+      <div>
+        <mat-icon matBadge="{{stuffItem.quantity}}" matBadgeSize="small" matBadgeColor="primary">{{stuffItem.categoryIcon}}</mat-icon>
+      </div>
+    </mat-panel-title>
+    <mat-panel-description>
+      {{stuffItem.name}}
+    </mat-panel-description>
+  </mat-expansion-panel-header>
     <div>
-      <button mat-icon-button color="primary"(click)="onOpenDialog()"><mat-icon>edit</mat-icon></button>
-      <button mat-icon-button color="warn" (click)="onDelete(stuffItem.id)"><mat-icon>delete</mat-icon></button>
-    </div>
-  </mat-card-footer>
-</mat-card>
+      <div class="description">
+       <p>{{stuffItem.description}}</p>
+      </div>
+      <div class="footer">
+        <div>
+          <span>Purchased: {{(stuffItem.dateEntered | stuffDate) +' ago'}}</span>
+        <br>
+          <span><i>{{stuffItem.expirationDate ? 'Expires in: '+(stuffItem.expirationDate | stuffDate:'expiration'):null}}</i></span>
+        </div>
+          <div class="action-buttons">
+            <button mat-icon-button color="primary"(click)="onOpenDialog()"><mat-icon>edit</mat-icon></button>
+            <button mat-icon-button color="warn" (click)="onDelete(stuffItem.id)"><mat-icon>delete</mat-icon></button>
+          </div>
+        </div>
+  </div>
+</mat-expansion-panel>
 
 
 
