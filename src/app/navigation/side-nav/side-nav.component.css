@@ -1,0 +1,17 @@
+.side-nav{
+  background-color: #366A82;
+  height: 100vh;
+  color:white;
+  display: flex;
+  align-content:center;
+  flex-direction: column;
+  padding:0px 16px 0px 16px;
+}
+.side-nav-list{
+  padding: 10px 15px 0px 15px;
+  overflow: hidden;
+}
+.side-nav__title{
+  display: flex;
+  margin-top: 16px;
+}
