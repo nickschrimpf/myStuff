@@ -16,6 +16,8 @@ import { connectFirestoreEmulator } from '@firebase/firestore';
 import { StuffDatePipe } from './shared/stuff-date.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './material.module';
+import { SideNavComponent } from './navigation/side-nav/side-nav.component';
+import { TopNavComponent } from './navigation/top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { MaterialsModule } from './material.module';
     StuffItemComponent,
     AddEditStuffComponent,
     HomeComponent,
-    StuffDatePipe
+    StuffDatePipe,
+    SideNavComponent,
+    TopNavComponent
   ],
   imports: [
     FormsModule,

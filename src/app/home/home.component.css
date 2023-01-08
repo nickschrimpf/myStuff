@@ -1,19 +1,15 @@
-.page-container{
-  position: absolute;
-  top: 0;
-  bottom:0;
-  left: 0;
-  right:0;
+/* .page-container{
   overflow: auto;
   background-color: white;
   display:flex;
   flex-direction: column;
-}
+} */
 .action-panel{
   width: 100vw;
   display: flex;
   justify-content: center;
-
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .action-panel__search{
   margin-right: 8px;
