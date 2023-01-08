@@ -1,7 +1,9 @@
-
+mat-tool-bar{
+  background-color: #D9E4EB;
+  color:#366a82;
+}
 .brand{
   /* padding-top: 16px; */
   margin-left: 16px;
   color:#366a82;
-
 }
