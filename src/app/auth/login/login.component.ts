@@ -26,4 +26,11 @@ export class LoginComponent implements OnInit {
   onSignUp(){
     this.router.navigate(['signup']);
   };
+  onPasswordReset(email){
+    this.authServ.onPasswordResetRequest(email).then(()=>{
+      this.errorMessage = "An email was sent if you have an existing account with that email"
+    }).catch((err)=> {
+      console.log(err.message)
+    })
+  }
 }
