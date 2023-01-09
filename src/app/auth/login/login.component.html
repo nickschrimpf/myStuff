@@ -6,7 +6,7 @@
       dignissimos eum modi recusandae tenetur necessitatibus illo!
   </P>
   <div class="form-container" >
-      <form class="form" #signUpForm="ngForm" (submit)="onSubmit(signUpForm)">
+      <form class="form" #signUpForm="ngForm">
         <mat-form-field appearance="outline">
           <mat-label>
               Email
@@ -18,6 +18,7 @@
             required="true"
             autocomplete="email"
             name="email"
+            #email="ngModel"
           >
         </mat-form-field>
 
@@ -30,12 +31,28 @@
             ngModel
             type="password"
             required="true"
-            autocomplete="new-password"
+            autocomplete="current-password"
             name="password"
           >
         </mat-form-field>
-        <button mat-raised-button [disabled]="signUpForm.invalid" type="submit"color="primary">submit</button>
+        <mat-error>{{errorMessage}}</mat-error>
+        <button
+           mat-raised-button
+           (click)="onSubmit(signUpForm)"
+           [disabled]="signUpForm.invalid"
+           type="submit"
+           color="primary"
+          >submit</button>
       </form>
+      <div class="help-actions">
+        <button mat-flat-button color="primary" (click)="onSignUp()">sign up</button>
+        <button
+          type="button"
+
+          [disabled]="email.invalid"
+          (click)="onPasswordReset(email.value)"
+          mat-flat-button color="accent">password reset</button>
+      </div>
   </div>
 </section>
 

@@ -9,7 +9,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+  errorMessage = '';
 
   constructor(
     private readonly authServ:AuthService,
@@ -25,8 +25,10 @@ export class SignupComponent implements OnInit {
       this.router.navigate(['/home']);
     })
     .catch((err)=> {
-      console.log(err);
+      this.errorMessage = err.message;
     })
   };
-
+  onLogin(){
+    this.router.navigate(['login']);
+  }
 }
