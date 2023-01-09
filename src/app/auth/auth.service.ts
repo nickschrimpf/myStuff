@@ -25,21 +25,18 @@ export class AuthService {
   initAuthListener(){
     authState(this.afAuth).subscribe(profile => {
       if(profile){
-        this.authChange.next(true)
+        this.authChange.next(true);
         this.isLoggedIn = true;
-        console.log(profile)
       }else{
         this.isLoggedIn = false;
         this.authChange.next(false);
         this.router.navigate(['welcome'])
-      }
-
-    })
-  }
+      };
+    });
+  };
 
   registerNewUser(signUpData:SignUpData){
     return createUserWithEmailAndPassword(this.afAuth,signUpData.email,signUpData.password).then((user)=>{
-      console.log(user);
     });
   };
   login(signUpData:SignUpData){
@@ -48,5 +45,4 @@ export class AuthService {
   logOut(){
     return signOut(this.afAuth);
   };
-
-}
+};

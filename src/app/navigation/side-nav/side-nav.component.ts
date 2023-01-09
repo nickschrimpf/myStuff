@@ -11,16 +11,14 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class SideNavComponent implements OnInit {
   @Output() sideNavToggle = new EventEmitter();
   constructor(private readonly authServ:AuthService,private readonly router:Router) { }
-
   authSub:Subscription
   isLoggedIn:boolean = false;
-
-
+  
   ngOnInit(): void {
     this.authSub = this.authServ.authChange.subscribe(isAuth => {
       this.isLoggedIn = isAuth;
     });
-  }
+  };
   onLogOut(){
     this.authServ.logOut().then(()=>{
     }).catch((err)=>{
@@ -28,13 +26,13 @@ export class SideNavComponent implements OnInit {
     });
     this.router.navigate(['welcome']);
     this.sideNavToggle.emit();
-  }
+  };
   onLogin(){
     this.router.navigate(['login']);
     this.sideNavToggle.emit();
-  }
+  };
   onSignUp(){
     this.router.navigate(['signup']);
     this.sideNavToggle.emit();
-  }
-}
+  };
+};
