@@ -1,32 +1,16 @@
-.page-container{
-  position: absolute;
-  top: 0;
-  bottom:0;
-  left: 0;
-  right:0;
+/* .page-container{
   overflow: auto;
-  background-color: #456179;
-  color:white;
+  background-color: white;
   display:flex;
   flex-direction: column;
-}
-.my-stuff-gif{
-  align-self: center;
-}
+} */
 .action-panel{
   width: 100vw;
   display: flex;
-  align-items: center;
   justify-content: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
-mat-form-field{
-  background-color:rgba(218, 229,225);
-  margin-left: 10px;
-  padding: 5px;
-  border-radius: 5px;
-  width:90%;
-  max-width: 350px;
-  align-content: center;
-  height: 58px;
-  border: none;
+.action-panel__search{
+  margin-right: 8px;
 }

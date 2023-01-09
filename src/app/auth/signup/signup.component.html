@@ -1,0 +1,40 @@
+<section class="sign-up">
+  <h1>Sign Up to Start Tracking Your Stuff</h1>
+  <P>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    Temporibus corrupti beatae ipsum blanditiis et nostrum praesentium?
+     Velit quaerat quibusdam architecto praesentium nihil, doloribus,
+      dignissimos eum modi recusandae tenetur necessitatibus illo!
+  </P>
+  <div class="form-container" >
+      <form class="form" #signUpForm="ngForm" (submit)="onSubmit(signUpForm)">
+        <mat-form-field appearance="outline">
+          <mat-label>
+              Email
+          </mat-label>
+          <input
+            matInput
+            ngModel
+            type="email"
+            required="true"
+            autocomplete="email"
+            name="email"
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>
+            Password
+          </mat-label>
+          <input
+            matInput
+            ngModel
+            type="password"
+            required="true"
+            autocomplete="new-password"
+            name="password"
+          >
+        </mat-form-field>
+        <button mat-raised-button [disabled]="signUpForm.invalid" type="submit"color="primary">submit</button>
+      </form>
+  </div>
+</section>

@@ -1,20 +1,26 @@
-mat-card{
-  margin:5px 10px 5px 10px;
-  width: 339px;
-  border-radius: 15px;
+mat-expansion-panel{
+  margin-top:8px;
+  max-width: 343px;
 }
-mat-card-title{
+mat-panel-description{
+  font-size: larger;
+}
+::ng-deep .mat-content{
+overflow: visible !important;
+}
+.description{
+  font-size: medium;
+  display: flex;
+  align-items: center;
+}
+.footer{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  /* font-size: small; */
+  color: grey;
 }
-.title-name{
+.action-buttons{
   display: flex;
-  align-items: center;
-}
-mat-card-footer{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 16px;
+  padding-left:10px;
 }

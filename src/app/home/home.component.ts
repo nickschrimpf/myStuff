@@ -11,16 +11,17 @@ import { StuffService } from './stuff.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  search = '';
   constructor(
     public dialog:MatDialog,
     private readonly stuffServ:StuffService
   ) { }
 
   ngOnInit(): void {
+
   };
 
   onOpenDialog(){
-
     const dialogRef = this.dialog.open(AddEditStuffComponent,{})
     dialogRef.afterClosed().subscribe(newStuff => {
       if(newStuff){
@@ -31,7 +32,13 @@ export class HomeComponent implements OnInit {
             newName += word.charAt(0).toUpperCase() + word.slice(1) + ' ';
           }
         }
-        const searchTerms  = newStuff.description.split(' ').concat(stuffName);
+        let searchTerms = []
+        if(newStuff.description){
+          searchTerms  = newStuff.description.split(' ').concat(stuffName);
+        }else{
+          searchTerms = stuffName
+        }
+
         let stuffCategoryIconName = '';
         if(newStuff.category === 'House Hold Stuff'){
           stuffCategoryIconName = 'house';

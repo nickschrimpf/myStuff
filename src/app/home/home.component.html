@@ -1,27 +1,21 @@
 <div class="page-container">
-  <h1>My Stuff</h1>
-    <div class="my-stuff-gif">
-      <img src="https://media.tenor.com/r1uMt9Vy1moAAAAC/behold-my-stuff-thor.gif">
-    </div>
-
     <div class="action-panel">
-      <div class="action-panel__addbtn">
-
-        <button mat-mini-fab (click)="onOpenDialog()" color="primary">
-          <mat-icon>add_circle</mat-icon>
-        </button>
-      </div>
-      <div class="action-panel__search">
+      <!-- <div class="action-panel__search">
         <mat-form-field color="accent" appearance="outline">
           <mat-label>search your stuff</mat-label>
         <input
           placeholder="search"
           matInput
           type="search"
-          ngModel
+          [(ngModel)]="search"
         >
         <mat-icon matPrefix color="accent">search</mat-icon>
       </mat-form-field>
+      </div> -->
+      <div class="action-panel__addbtn">
+        <button mat-mini-fab (click)="onOpenDialog()" color="accent">
+          <mat-icon>add</mat-icon>
+        </button>
       </div>
     </div>
   <router-outlet></router-outlet>
