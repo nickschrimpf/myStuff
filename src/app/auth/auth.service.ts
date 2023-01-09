@@ -30,15 +30,18 @@ export class AuthService {
       if(profile){
         this.authChange.next(true);
         this.isLoggedIn = true;
+        this.router.navigate(['home']);
       }else{
         this.isLoggedIn = false;
         this.authChange.next(false);
+        this.router.navigate(['welcome']);
       };
     });
   };
 
   registerNewUser(signUpData:SignUpData){
     return createUserWithEmailAndPassword(this.afAuth,signUpData.email,signUpData.password).then((user)=>{
+      // THIS MIGHT BE USED LATER IF WE FEEL WE NEED TO VARIFY USERS EMAILS
       // sendEmailVerification(this.afAuth.currentUser);
     });
   };
@@ -46,6 +49,7 @@ export class AuthService {
     return signInWithEmailAndPassword(this.afAuth,signUpData.email,signUpData.password);
   };
   logOut(){
+    this.authChange.next(false);
     return signOut(this.afAuth);
   };
   onPasswordResetRequest(email){
