@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { getApp, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore,getFirestore,Firestore, initializeFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
 
 import { connectFirestoreEmulator } from '@firebase/firestore';
 import { StuffDatePipe } from './shared/stuff-date.pipe';
@@ -18,6 +19,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './material.module';
 import { SideNavComponent } from './navigation/side-nav/side-nav.component';
 import { TopNavComponent } from './navigation/top-nav/top-nav.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { AuthService } from './auth/auth.service';
+import { Auth, provideAuth } from '@angular/fire/auth';
+import { connectAuthEmulator, getAuth, initializeAuth } from '@firebase/auth';
+
+
 
 @NgModule({
   declarations: [
@@ -28,7 +35,8 @@ import { TopNavComponent } from './navigation/top-nav/top-nav.component';
     HomeComponent,
     StuffDatePipe,
     SideNavComponent,
-    TopNavComponent
+    TopNavComponent,
+    WelcomeComponent
   ],
   imports: [
     FormsModule,
@@ -36,6 +44,8 @@ import { TopNavComponent } from './navigation/top-nav/top-nav.component';
     BrowserModule,
     AppRoutingModule,
     MaterialsModule,
+    AngularFireModule,
+    BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => {
       let firestore:Firestore;
@@ -47,9 +57,19 @@ import { TopNavComponent } from './navigation/top-nav/top-nav.component';
         }
       return firestore
     }),
-    BrowserAnimationsModule
+
+    provideAuth(()=> {
+      let auth:Auth;
+      if(environment.useEmulators){
+        auth  = initializeAuth(getApp(),{});
+        connectAuthEmulator(auth, 'http://127.0.0.1:9099', { disableWarnings: true });
+      }else{
+        auth = getAuth()
+      }
+      return auth
+    }),
   ],
-  providers:[],
+  providers:[AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
