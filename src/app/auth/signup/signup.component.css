@@ -10,4 +10,10 @@
 }
 .form-container{
   display: flex;
+  flex-direction: column;
+}
+.help-actions{
+  display:flex;
+  justify-content: space-between;
+  padding-top: 8px;
 }

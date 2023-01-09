@@ -30,12 +30,17 @@
             ngModel
             type="password"
             required="true"
-            autocomplete="new-password"
+            autocomplete="current-password"
             name="password"
           >
         </mat-form-field>
+        <mat-error>{{errorMessage}}</mat-error>
         <button mat-raised-button [disabled]="signUpForm.invalid" type="submit"color="primary">submit</button>
       </form>
+      <div class="help-actions">
+        <button mat-button (click)="onSignUp()">sign up</button>
+        <a>forgot my password</a>
+      </div>
   </div>
 </section>
 

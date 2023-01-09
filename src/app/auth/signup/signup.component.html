@@ -34,7 +34,12 @@
             name="password"
           >
         </mat-form-field>
+        <mat-error>{{errorMessage}}</mat-error>
         <button mat-raised-button [disabled]="signUpForm.invalid" type="submit"color="primary">submit</button>
       </form>
+      <div class="help-actions">
+        <button mat-button (click)="onLogin()">Login</button>
+        <a>I Agree to the T.O.S</a>
+      </div>
   </div>
 </section>

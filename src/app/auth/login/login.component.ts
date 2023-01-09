@@ -9,15 +9,21 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  errorMessage = '';
   constructor(private readonly authServ:AuthService, private readonly router:Router) { }
 
   ngOnInit(): void {
   }
-  
+
   onSubmit(form:NgForm){
     this.authServ.login({'email':form.value.email,'password':form.value.password}).then(()=>{
       this.router.navigate(['home']);
+    }).catch((err)=>{
+      console.log(err)
+      this.errorMessage = err.message
     });
+  };
+  onSignUp(){
+    this.router.navigate(['signup']);
   };
 }
