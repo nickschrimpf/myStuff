@@ -24,6 +24,7 @@ import { AuthService } from './auth/auth.service';
 import { Auth, provideAuth } from '@angular/fire/auth';
 import { connectAuthEmulator, getAuth, initializeAuth } from '@firebase/auth';
 import { SignupComponent } from './auth/signup/signup.component';
+import { LoginComponent } from './auth/login/login.component';
 
 
 
@@ -38,7 +39,8 @@ import { SignupComponent } from './auth/signup/signup.component';
     SideNavComponent,
     TopNavComponent,
     WelcomeComponent,
-    SignupComponent
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     FormsModule,
@@ -64,7 +66,7 @@ import { SignupComponent } from './auth/signup/signup.component';
       let auth:Auth;
       if(environment.useEmulators){
         auth  = initializeAuth(getApp(),{});
-        connectAuthEmulator(auth, 'http://127.0.0.1:9099', { disableWarnings: true });
+        connectAuthEmulator(auth, 'http://127.0.0.1:9099');
       }else{
         auth = getAuth()
       }

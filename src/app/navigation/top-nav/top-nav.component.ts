@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
   selector: 'app-top-nav',
@@ -7,9 +9,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class TopNavComponent implements OnInit {
 @Output() sidenavToggle = new EventEmitter<void>()
-  constructor() { }
+  authSub:Subscription
+  isLoggedIn:boolean = false;s
+  constructor(private readonly authServ:AuthService) { }
 
   ngOnInit(): void {
+    this.authSub = this.authServ.authChange.subscribe(isAuth => {
+      this.isLoggedIn = isAuth;
+    });
   }
   onToggleSideNav(){
     this.sidenavToggle.emit()

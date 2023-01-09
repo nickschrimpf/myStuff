@@ -3,25 +3,25 @@
     <h1>My Stuff</h1>
   </div>
   <div class="side-nav-list">
-    <div>
+    <div *ngIf="isLoggedIn">
       <button routerLink="home" mat-icon-button>
         <mat-icon>home</mat-icon>
       </button>
       <label>Home</label>
     </div>
-    <div>
+    <div *ngIf="!isLoggedIn" (click)="onLogin()">
       <button mat-icon-button>
         <mat-icon>login</mat-icon>
       </button>
       <label>Login</label>
     </div>
-    <div>
+    <div *ngIf="isLoggedIn"  (click)="onLogOut()">
       <button mat-icon-button>
         <mat-icon>logout</mat-icon>
       </button>
       <label>Log Out</label>
     </div>
-    <div routerLink="signup">
+    <div *ngIf="!isLoggedIn"(click)="onSignUp()">
       <button mat-icon-button>
         <mat-icon>upgrade</mat-icon>
       </button>
