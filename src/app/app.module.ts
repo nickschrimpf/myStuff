@@ -23,6 +23,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthService } from './auth/auth.service';
 import { Auth, provideAuth } from '@angular/fire/auth';
 import { connectAuthEmulator, getAuth, initializeAuth } from '@firebase/auth';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 
@@ -36,7 +37,8 @@ import { connectAuthEmulator, getAuth, initializeAuth } from '@firebase/auth';
     StuffDatePipe,
     SideNavComponent,
     TopNavComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    SignupComponent
   ],
   imports: [
     FormsModule,
