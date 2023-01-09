@@ -25,10 +25,6 @@ export class StuffItemComponent implements OnInit {
   onOpenDialog():void{
     const dialogRef = this.dialog.open(AddEditStuffComponent,{data:this.stuffItem});
     dialogRef.afterClosed().subscribe(editedStuff => {
-<<<<<<< HEAD
-
-=======
->>>>>>> 2d4efb6dbc0279f8d465103c35fe456a790a36d4
         if(editedStuff){
           const stuffName = editedStuff.name.split(' ');
           let newName = '';
@@ -37,21 +33,12 @@ export class StuffItemComponent implements OnInit {
               newName += word.charAt(0).toUpperCase() + word.slice(1) + ' ';
             };
           };
-<<<<<<< HEAD
           let searchTerms = []
           if(editedStuff.description){
             searchTerms  = editedStuff.description.split(' ').concat(stuffName);
           }else{
             searchTerms = stuffName;
           };
-=======
-          let searchTerms = [];
-          if(editedStuff.description){
-            searchTerms  = editedStuff.description.split(' ').concat(stuffName);
-          }else{
-            searchTerms = stuffName
-          }
->>>>>>> 2d4efb6dbc0279f8d465103c35fe456a790a36d4
           let stuffCategoryIconName = '';
           if(editedStuff.category === 'House Hold Stuff'){
             stuffCategoryIconName = 'house';
@@ -64,10 +51,6 @@ export class StuffItemComponent implements OnInit {
           }else if(editedStuff.category === 'Perishable Stuff'){
             stuffCategoryIconName = 'kitchen';
           };
-<<<<<<< HEAD
-=======
-
->>>>>>> 2d4efb6dbc0279f8d465103c35fe456a790a36d4
           this.stuffServ.onUpdateStuff({
             id:this.stuffItem.id,
             dateEntered:this.stuffItem.dateEntered,
