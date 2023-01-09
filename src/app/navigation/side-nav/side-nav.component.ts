@@ -13,17 +13,14 @@ export class SideNavComponent implements OnInit {
   constructor(private readonly authServ:AuthService,private readonly router:Router) { }
   authSub:Subscription
   isLoggedIn:boolean = false;
-  
+
   ngOnInit(): void {
     this.authSub = this.authServ.authChange.subscribe(isAuth => {
       this.isLoggedIn = isAuth;
     });
   };
   onLogOut(){
-    this.authServ.logOut().then(()=>{
-    }).catch((err)=>{
-      console.log(err)
-    });
+    this.authServ.logOut();
     this.router.navigate(['welcome']);
     this.sideNavToggle.emit();
   };
