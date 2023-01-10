@@ -1,12 +1,14 @@
 mat-expansion-panel{
   margin-top:8px;
-  max-width: 343px;
+  margin-left:8px;
+  margin-right: 8px;
+  max-width: 600px;
 }
 mat-panel-description{
   font-size: larger;
 }
 ::ng-deep .mat-content{
-overflow: visible !important;
+  overflow: visible !important;
 }
 .description{
   font-size: medium;
@@ -17,7 +19,6 @@ overflow: visible !important;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* font-size: small; */
   color: grey;
 }
 .action-buttons{
