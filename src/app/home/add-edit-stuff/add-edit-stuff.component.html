@@ -8,17 +8,15 @@
               matInput
               name="name"
               type="text"
-              maxlength="15"
+              maxlength="30"
               minlength="3"
               formControlName="name"
               autocomplete="on"
               spellcheck="true"
             >
-            <mat-hint>min 3 characters and a max of 15</mat-hint>
+            <mat-hint>min 3 characters and a max of 30</mat-hint>
             <mat-error *ngIf="stuffForm.get('name').touched && stuffForm.get('name').invalid"> Please name your stuff!</mat-error>
           </mat-form-field>
-
-
 
           <mat-form-field>
             <mat-label for="quantity">How Much Stuff?</mat-label>
