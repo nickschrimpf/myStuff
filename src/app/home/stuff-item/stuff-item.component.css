@@ -12,8 +12,9 @@ mat-panel-description{
 }
 .description{
   font-size: medium;
-  display: flex;
-  align-items: center;
+  height: fit-content;
+  max-width: 300px;
+  max-width: 400px;
 }
 .footer{
   display: flex;

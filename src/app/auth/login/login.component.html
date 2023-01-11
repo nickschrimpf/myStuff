@@ -1,11 +1,9 @@
-<section class="sign-up">
-  <h1>Login To View Your Stuff</h1>
-  <P>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-    Temporibus corrupti beatae ipsum blanditiis et nostrum praesentium?
-     Velit quaerat quibusdam architecto praesentium nihil, doloribus,
-      dignissimos eum modi recusandae tenetur necessitatibus illo!
-  </P>
-  <div class="form-container" >
+<section class="login">
+  <div class="title" >
+      <span>Welcome Back!</span>
+      <p>Log in to view your Stuff</p>
+  </div>
+  <div class="form-container">
       <form class="form" #signUpForm="ngForm">
         <mat-form-field appearance="outline">
           <mat-label>
@@ -21,37 +19,39 @@
             #email="ngModel"
           >
         </mat-form-field>
-
         <mat-form-field appearance="outline">
-          <mat-label>
-            Password
-          </mat-label>
-          <input
-            matInput
-            ngModel
-            type="password"
-            required="true"
-            autocomplete="current-password"
-            name="password"
-          >
-        </mat-form-field>
+            <mat-label>
+              Password
+            </mat-label>
+            <input
+              matInput
+              ngModel
+              type="password"
+              required="true"
+              autocomplete="current-password"
+              name="password"
+            >
+          </mat-form-field>
         <mat-error>{{errorMessage}}</mat-error>
+        <div class="forgot-password">
+          <button
+            mat-button
+            [disabled]="email.invalid"
+            (click)="onPasswordReset(email.value)"
+            color="accent">forgot your password?
+          </button>
+        </div>
         <button
            mat-raised-button
            (click)="onSubmit(signUpForm)"
            [disabled]="signUpForm.invalid"
            type="submit"
            color="primary"
-          >submit</button>
+          >Login</button>
       </form>
-      <div class="help-actions">
-        <button mat-flat-button color="primary" (click)="onSignUp()">sign up</button>
-        <button
-          type="button"
-
-          [disabled]="email.invalid"
-          (click)="onPasswordReset(email.value)"
-          mat-flat-button color="accent">password reset</button>
+      <div class="sign-up-button">
+        <span>Dont't have an account yet?</span>
+        <button mat-button color="primary" (click)="onSignUp()"> sign-up</button>
       </div>
   </div>
 </section>
