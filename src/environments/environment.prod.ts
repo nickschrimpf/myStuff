@@ -1,5 +1,6 @@
 export const environment = {
   firebase: {
+
     projectId: 'mystuff-c0313',
     appId: '1:775353549246:web:4e03b166e59144047939ef',
     storageBucket: 'mystuff-c0313.appspot.com',
@@ -9,4 +10,5 @@ export const environment = {
     measurementId: 'G-YM2LNFT6DC',
   },
   production: true,
+  useEmulators:false,
 };
