@@ -8,9 +8,9 @@ import { StuffItemComponent } from './home/stuff-item/stuff-item.component';
 import { AddEditStuffComponent } from './home/add-edit-stuff/add-edit-stuff.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { getApp, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore,getFirestore, Firestore, initializeFirestore, connectFirestoreEmulator } from '@angular/fire/firestore';
 
 
 import { StuffDatePipe } from './shared/stuff-date.pipe';
@@ -20,7 +20,7 @@ import { SideNavComponent } from './navigation/side-nav/side-nav.component';
 import { TopNavComponent } from './navigation/top-nav/top-nav.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthService } from './auth/auth.service';
-import { provideAuth } from '@angular/fire/auth';
+import { Auth, connectAuthEmulator, initializeAuth, provideAuth } from '@angular/fire/auth';
 import { getAuth} from '@firebase/auth';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -49,8 +49,27 @@ import { LoginComponent } from './auth/login/login.component';
     MaterialsModule,
     BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    provideAuth(()=> getAuth())
+    provideFirestore(() => {
+      let firestore:Firestore;
+        if(environment.useEmulators){
+          firestore = initializeFirestore(getApp(),{})
+          connectFirestoreEmulator(firestore,'localhost', 8080);
+        }else{
+          firestore = getFirestore()
+        }
+      return firestore
+    }),
+
+    provideAuth(()=> {
+      let auth:Auth;
+      if(environment.useEmulators){
+        auth  = initializeAuth(getApp(),{});
+        connectAuthEmulator(auth, 'http://127.0.0.1:9099');
+      }else{
+        auth = getAuth()
+      }
+      return auth
+    }),
   ],
   providers:[AuthService],
   bootstrap: [AppComponent]
