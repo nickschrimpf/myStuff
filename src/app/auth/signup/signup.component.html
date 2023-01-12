@@ -78,7 +78,7 @@
           <div class="sign-up-button">
             <button
               mat-raised-button
-              [disabled]="signUpForm.invalid"
+              [disabled]="signUpForm.invalid || password.value != passwordConfirm.value"
               type="submit"
               color="primary"
               >Sign up
