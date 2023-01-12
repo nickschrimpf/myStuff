@@ -20,7 +20,7 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    console.log(form.value)
+    // I THINK I WILL END UP USING REACTIVE FORMS TO VALIDATE PASSWORDS IN THE FUTURE
     if(form.value.password === form.value.passwordConfirm){
       this.authServ.registerNewUser({email:form.value.email,password:form.value.password})
         .then(()=>{
@@ -35,5 +35,5 @@ export class SignupComponent implements OnInit {
   };
   onLogin(){
     this.router.navigate(['login']);
-  }
-}
+  };
+};

@@ -15,6 +15,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -34,8 +35,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatBadgeModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatCheckboxModule
-
+    MatCheckboxModule,
+    MatDividerModule,
   ],
   exports:[
     MatButtonModule,
@@ -51,7 +52,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatBadgeModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDividerModule
   ],
 })
 

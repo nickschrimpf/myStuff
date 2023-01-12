@@ -16,7 +16,9 @@
             required="true"
             autocomplete="email"
             name="email"
+            pattern="^\S+@\S+\.\S+$"
             #email="ngModel"
+            email
           >
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -41,18 +43,20 @@
             color="accent">forgot your password?
           </button>
         </div>
-        <button
-           mat-raised-button
-           (click)="onSubmit(signUpForm)"
-           [disabled]="signUpForm.invalid"
-           type="submit"
-           color="primary"
-          >Login</button>
+        <div class="login-button">
+          <button
+          mat-raised-button
+          (click)="onSubmit(signUpForm)"
+          [disabled]="signUpForm.invalid"
+          type="submit"
+          color="primary"
+         >Login</button>
+        </div>
       </form>
-      <div class="sign-up-button">
-        <span>Dont't have an account yet?</span>
-        <button mat-button color="primary" (click)="onSignUp()"> sign-up</button>
-      </div>
+  </div>
+  <div class="sign-up-button">
+    <span>Dont't have an account yet?</span>
+    <button mat-button color="primary" (click)="onSignUp()"> sign-up</button>
   </div>
 </section>
 

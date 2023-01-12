@@ -27,12 +27,20 @@
   display: flex;
   flex-direction: column;
 }
-.sign-up-button{
-  margin-top: 8px;
-  display: flex;
-  align-items: flex-end;
-}
 .forgot-password{
   display: flex;
   justify-content:flex-end;
 }
+.login-button{
+  display: flex;
+  justify-content: flex-end;
+}
+.sign-up-button{
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color:#366A82;
+  margin-right: 16px;
+}
+

@@ -8,13 +8,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: x-large;
   margin-top: 24px;
   margin-bottom: 24px;
   line-height: 125%;
   color:#366A82;
-  max-width: 350px;
+  width: 100%;
 }
 .form-container{
   display: flex;
@@ -30,12 +29,18 @@
   display: flex;
   flex-direction: column;
 }
-.sign-up-button{
-  margin-top: 8px;
-  display: flex;
-  align-items: flex-end;
+mat-checkbox{
+  margin-bottom: 8px;
 }
-.forgot-password{
+.sign-up-button{
+  margin-top: 16px;
   display: flex;
-  justify-content:flex-end;
+  justify-content: flex-end;
+}
+.login-button{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 16px;
+  color:#366A82;
 }

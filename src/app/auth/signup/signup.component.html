@@ -1,7 +1,7 @@
 <section class="sign-up">
   <div class="title">
     <span>Sign Up</span>
-    <span>to Start Tracking Your Stuff</span>
+    <span>Start Tracking Your Stuff</span>
   </div>
 
   <div class="form-container" >
@@ -23,8 +23,6 @@
             #email=ngModel
           >
         </mat-form-field>
-
-
         <mat-form-field appearance="outline">
           <mat-label>
             Password
@@ -35,6 +33,7 @@
             type="password"
             required
             minlength="8"
+            maxlength="20"
             autocomplete="new-password"
             name="password"
             #password=ngModel
@@ -42,9 +41,10 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-error *ngIf="passwordConfirm.touched &&
+          password.touched &&
           password.value != passwordConfirm.value"
          >
-          Your passwords must be entered twice identically
+          Your password must be entered in both fields
         </mat-error>
           <mat-label>
             Password Confirmation
@@ -54,6 +54,7 @@
             ngModel
             type="password"
             minlength="8"
+            maxlength="20"
             required
             autocomplete="new-password"
             name="passwordConfirm"
@@ -61,8 +62,6 @@
 
           >
         </mat-form-field>
-
-
               <mat-checkbox
               required
               name="agreement"
@@ -73,19 +72,22 @@
             </mat-checkbox>
 
 
+          <mat-divider></mat-divider>
+
         <mat-error>{{errorMessage}}</mat-error>
-        <button
-          mat-raised-button
-          [disabled]="signUpForm.invalid"
-          type="submit"
-          color="primary"
-          >Sign up
-        </button>
+          <div class="sign-up-button">
+            <button
+              mat-raised-button
+              [disabled]="signUpForm.invalid"
+              type="submit"
+              color="primary"
+              >Sign up
+            </button>
+          </div>
       </form>
-      <div class="help-actions">
-        <span>already have an account?</span>
-        <button mat-button (click)="onLogin()">Login</button>
-        <!-- <a>I Agree to the T.O.S</a> -->
-      </div>
+  </div>
+  <div class="login-button">
+    <span>already have an account?</span>
+    <button mat-button (click)="onLogin()">Login</button>
   </div>
 </section>
