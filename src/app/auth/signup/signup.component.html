@@ -1,25 +1,29 @@
 <section class="sign-up">
-  <h1>Sign Up to Start Tracking Your Stuff</h1>
-  <P>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-    Temporibus corrupti beatae ipsum blanditiis et nostrum praesentium?
-     Velit quaerat quibusdam architecto praesentium nihil, doloribus,
-      dignissimos eum modi recusandae tenetur necessitatibus illo!
-  </P>
+  <div class="title">
+    <span>Sign Up</span>
+    <span>to Start Tracking Your Stuff</span>
+  </div>
+
   <div class="form-container" >
       <form class="form" #signUpForm="ngForm" (submit)="onSubmit(signUpForm)">
         <mat-form-field appearance="outline">
           <mat-label>
               Email
           </mat-label>
+          <mat-error *ngIf="email.touched && email.invalid">You need to put an valid email address here</mat-error>
           <input
             matInput
             ngModel
+            email
             type="email"
-            required="true"
+            pattern="^\S+@\S+\.\S+$"
+            required
             autocomplete="email"
             name="email"
+            #email=ngModel
           >
         </mat-form-field>
+
 
         <mat-form-field appearance="outline">
           <mat-label>
@@ -29,17 +33,59 @@
             matInput
             ngModel
             type="password"
-            required="true"
+            required
+            minlength="8"
             autocomplete="new-password"
             name="password"
+            #password=ngModel
           >
         </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-error *ngIf="passwordConfirm.touched &&
+          password.value != passwordConfirm.value"
+         >
+          Your passwords must be entered twice identically
+        </mat-error>
+          <mat-label>
+            Password Confirmation
+          </mat-label>
+          <input
+            matInput
+            ngModel
+            type="password"
+            minlength="8"
+            required
+            autocomplete="new-password"
+            name="passwordConfirm"
+            #passwordConfirm=ngModel
+
+          >
+        </mat-form-field>
+
+
+              <mat-checkbox
+              required
+              name="agreement"
+              matInput
+              ngModel
+              #agreement=ngModel
+              >I will not use this product to do anything illegal
+            </mat-checkbox>
+
+
         <mat-error>{{errorMessage}}</mat-error>
-        <button mat-raised-button [disabled]="signUpForm.invalid" type="submit"color="primary">submit</button>
+        <button
+          mat-raised-button
+          [disabled]="signUpForm.invalid"
+          type="submit"
+          color="primary"
+          >Sign up
+        </button>
       </form>
       <div class="help-actions">
+        <span>already have an account?</span>
         <button mat-button (click)="onLogin()">Login</button>
-        <a>I Agree to the T.O.S</a>
+        <!-- <a>I Agree to the T.O.S</a> -->
       </div>
   </div>
 </section>

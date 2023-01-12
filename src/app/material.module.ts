@@ -14,6 +14,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 
 
 
@@ -31,7 +33,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatExpansionModule,
     MatBadgeModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCheckboxModule
 
   ],
   exports:[
@@ -47,7 +50,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatExpansionModule,
     MatBadgeModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatCheckboxModule
   ],
 })
 

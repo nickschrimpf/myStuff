@@ -1,19 +1,41 @@
 .sign-up{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  background-color: #d9e4eb;
+  height: 100vh;
 }
-.form{
-  max-width: 300px;
+.title{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: x-large;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  line-height: 125%;
+  color:#366A82;
+  max-width: 350px;
 }
 .form-container{
   display: flex;
   flex-direction: column;
+  align-self: center;
+  min-width: 300px;
+  background-color: white;
+  padding: 16px;
+  border-radius: 4px;
+  color:#366A82;
 }
-.help-actions{
-  display:flex;
-  justify-content: space-between;
-  padding-top: 8px;
+.form{
+  display: flex;
+  flex-direction: column;
+}
+.sign-up-button{
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-end;
+}
+.forgot-password{
+  display: flex;
+  justify-content:flex-end;
 }

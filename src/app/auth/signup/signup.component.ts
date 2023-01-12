@@ -20,13 +20,18 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(form:NgForm){
-    this.authServ.registerNewUser({email:form.value.email,password:form.value.password})
-    .then(()=>{
-      this.router.navigate(['/home']);
-    })
-    .catch((err)=> {
-      this.errorMessage = err.message;
-    })
+    console.log(form.value)
+    if(form.value.password === form.value.passwordConfirm){
+      this.authServ.registerNewUser({email:form.value.email,password:form.value.password})
+        .then(()=>{
+          this.router.navigate(['/home']);
+        })
+        .catch((err)=> {
+          this.errorMessage = err.message;
+        });
+    }else{
+      this.errorMessage = "Your passwords did not match"
+    };
   };
   onLogin(){
     this.router.navigate(['login']);
