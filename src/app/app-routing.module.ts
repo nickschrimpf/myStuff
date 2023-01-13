@@ -5,17 +5,47 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
-import { canActivate,redirectLoggedInTo,redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AuthGuard ,redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
-const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['welcome']);
 
 const routes: Routes = [
-  {path:'welcome',component:WelcomeComponent,...canActivate(redirectLoggedInToHome)},
-  {path:'signup',component:SignupComponent,...canActivate(redirectLoggedInToHome)},
-  {path:'login',component:LoginComponent,...canActivate(redirectLoggedInToHome)},
-  {path:'home',component:HomeComponent,...canActivate(redirectUnauthorizedToLogin)},
-  {path:'**',redirectTo:'welcome',pathMatch:'full'}
+  {
+    path:'welcome',
+    component:WelcomeComponent,
+    data:{animation:'WelcomePage'}
+  },
+  {
+    path:'signup',
+    component:SignupComponent,
+    data:{animation:'SignUpPage'}
+  },
+  {
+    path:'login',
+    component:LoginComponent,
+    data:{animation:'LoginPage'}
+  },
+  {
+    path:'home',
+    component:HomeComponent,
+    canActivate:[AuthGuard],
+    data:{
+      animation:'HomePage',
+      authGuardPipe:redirectUnauthorizedToLogin
+    }
+  },
+  {
+    path:'**',
+    redirectTo:'welcome',
+    pathMatch:'full',
+
+  },
+  {
+    path:'',
+    redirectTo:'welcome',
+    pathMatch:'full',
+
+  }
 ];
 
 @NgModule({
