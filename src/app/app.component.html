@@ -4,7 +4,10 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <app-top-nav (sidenavToggle)="sidenav.toggle()"></app-top-nav>
-    <router-outlet></router-outlet>
+    <main [@routeAnimations]="getRouteAnimationData(outlet)">
+      <router-outlet #outlet="outlet"></router-outlet>
+    </main>
+
   </mat-sidenav-content>
 </mat-sidenav-container>
 
