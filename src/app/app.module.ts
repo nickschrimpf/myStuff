@@ -10,8 +10,8 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { getApp, initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore, Firestore, initializeFirestore, connectFirestoreEmulator } from '@angular/fire/firestore';
-
+import { provideFirestore, getFirestore, Firestore, initializeFirestore, connectFirestoreEmulator} from '@angular/fire/firestore';
+import { provideStorage,getStorage, connectStorageEmulator } from '@angular/fire/storage';
 
 import { StuffDatePipe } from './shared/stuff-date.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -59,6 +59,13 @@ import { LoginComponent } from './auth/login/login.component';
         }
       return firestore
     }),
+    provideStorage(() => {
+      let storage = getStorage()
+      if(environment.useEmulators){
+        connectStorageEmulator(storage,'localhost',9199)
+      }
+      return storage
+      }),
 
     provideAuth(()=> {
       let auth:Auth;

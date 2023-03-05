@@ -1,8 +1,8 @@
-import { ConditionalExpr } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import {
   Auth,
   authState,
+  browserSessionPersistence,
   createUserWithEmailAndPassword,
   sendEmailVerification,
   sendPasswordResetEmail,
@@ -40,12 +40,15 @@ export class AuthService {
   };
 
   registerNewUser(signUpData:SignUpData){
+      this.afAuth.setPersistence(browserSessionPersistence)
     return createUserWithEmailAndPassword(this.afAuth,signUpData.email,signUpData.password).then((user)=>{
+      
       // THIS MIGHT BE USED LATER IF WE FEEL WE NEED TO VARIFY USERS EMAILS
       // sendEmailVerification(this.afAuth.currentUser);
     });
   };
   login(signUpData:SignUpData){
+    this.afAuth.setPersistence(browserSessionPersistence)
     return signInWithEmailAndPassword(this.afAuth,signUpData.email,signUpData.password);
   };
   logOut(){

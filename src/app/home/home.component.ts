@@ -51,6 +51,7 @@ export class HomeComponent implements OnInit {
         }else if(newStuff.category === 'Perishable Stuff'){
           stuffCategoryIconName = 'kitchen';
         };
+        
         this.stuffServ.onAddNewStuff({
           dateEntered:new Date(),
           name:newName,

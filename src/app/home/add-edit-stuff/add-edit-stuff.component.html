@@ -44,6 +44,46 @@
         </mat-form-field>
 
         <mat-form-field>
+          <mat-label for="placeOfPurchase">Where did you get that stuff</mat-label>
+          <input
+           matInput
+           type="text"
+           name="placeOfPurchase"
+           formControlName="placeOfPurchase"
+           max-length="180"
+           spellcheck="true"
+           >
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label for="price">How much you pay for that stuff</mat-label>
+          <input
+           matInput
+           type="number"
+           step="0.00"
+           name="price"
+           formControlName="price"
+           max-length="180"
+           spellcheck="true"
+           >
+        </mat-form-field>
+
+
+          <input
+            class="photoUpload"
+            type="file"
+            name="stuffPhoto"
+            formControlName="photoFile"
+            accept="image/png,image/jpeg,image/jpg,"
+            #photoUpLoad
+            (change)="this.onPhotoAdded($event)"
+          >
+
+        <mat-label>photo of your new stuff</mat-label>
+        <button type="button" mat-fab (click)="photoUpLoad.click()">
+          <mat-icon>photo_camera</mat-icon>
+        </button>
+
+        <mat-form-field>
           <mat-label for="category">Category</mat-label>
           <mat-select
             matInput

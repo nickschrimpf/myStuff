@@ -22,6 +22,5 @@ export class AppComponent implements OnInit{
   };
   getRouteAnimationData(outlet:RouterOutlet){
     return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
-    // return this.context.getContext('prmary')?.route?.snapshot?.data?.['animation'];
   };
 }

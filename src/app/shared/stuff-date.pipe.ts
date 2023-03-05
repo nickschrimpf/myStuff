@@ -3,6 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'stuffDate'
 })
+
 export class StuffDatePipe implements PipeTransform {
 
   transform(value,timeFrame = 'timeSinceItemEntry'): string {
@@ -13,11 +14,13 @@ export class StuffDatePipe implements PipeTransform {
     const today = Date.now()/1000;
     const entryDate = value.seconds;
     const entryDateString = new Date(value.seconds * 1000).toDateString();
+
     if(timeFrame != 'timeSinceItemEntry'){
       stuffTimeInSecs = entryDate - today;
     }else{
       stuffTimeInSecs = today - entryDate;
     }
+
     const hourInSec = 3600;
     const dayInSec  = 86400;
     const weekInSec = 604800;

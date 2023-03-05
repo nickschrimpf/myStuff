@@ -1,5 +1,4 @@
 import { animate, animateChild, group, query, style, transition, trigger } from "@angular/animations";
-import { MissingTranslationStrategy } from "@angular/core";
 
 
 export const slideInAnimation =
